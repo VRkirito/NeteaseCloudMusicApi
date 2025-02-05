@@ -137,21 +137,6 @@ async function consturctServer(moduleDefs) {
   const app = express()
   const { CORS_ALLOW_ORIGIN } = process.env
   app.set('trust proxy', true)
-// JANXLAND修改
-  let otherServerHandler = (req, res)=>{
-    const api_map = {
-      tencent:qq,
-      kugou:kugou,
-    }
-    try {
-      api_map[req.query.server].api_map[req.baseUrl](req._parsedUrl.search).success((data)=>{
-        res.status(200).send(data)
-      })  
-    } catch (error) {
-      res.status(500).send({msg:"666"})
-    }
-  }
-  //JANXLAND修改
   /**
    * CORS & Preflight request
    */
